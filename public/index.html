@@ -17,7 +17,19 @@
     <title>R&D Talent Search</title>
     
     <style>
-      #clustrmaps { display: none !important; }
+      #clustrmaps,
+      #clustrmaps-widget,
+      .clustrmaps-widget,
+      [id*="clustrmaps"],
+      [class*="clustrmaps"],
+      img[src*="clustrmaps"],
+      img[src*="cdn.clustrmaps"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        position: absolute !important;
+        left: -9999px !important;
+      }
     </style>
   </head>
   <body>
