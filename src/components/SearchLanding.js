@@ -36,7 +36,7 @@ const SearchLanding = ({ onSearch }) => {
         </form>
 
         <div className="text-sm text-gray-500 space-y-2">
-          <p>Try examples like:</p>
+          <p>For now, try examples like:</p>
           <div className="flex flex-wrap justify-center gap-3">
             <button
               onClick={() => setQuery("Senior ML researcher with computer vision expertise and 5+ years experience")}

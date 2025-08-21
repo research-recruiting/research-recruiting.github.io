@@ -121,7 +121,7 @@ export const profilesData = {
     jdMatchScore: 92,
     scholarlyImpact: 88,
     jdMatchReasons: [
-      'Excellent CV expertise match',
+      'Excellent Computer Vision expertise match',
       'Strong industry leadership experience',
       'Minor gap in theoretical research'
     ],
