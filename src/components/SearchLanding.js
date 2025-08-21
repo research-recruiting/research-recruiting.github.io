@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { trackEvent } from '../utils/analytics';
 
 const SearchLanding = ({ onSearch }) => {
   const [query, setQuery] = useState('');
@@ -7,6 +8,10 @@ const SearchLanding = ({ onSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (query.trim()) {
+      trackEvent('search', {
+        search_term: query.trim(),
+        search_method: 'manual_input'
+      });
       onSearch(query);
     }
   };
@@ -39,19 +44,40 @@ const SearchLanding = ({ onSearch }) => {
           <p>For now, try examples like:</p>
           <div className="flex flex-wrap justify-center gap-3">
             <button
-              onClick={() => setQuery("Senior ML researcher with computer vision expertise and 5+ years experience")}
+              onClick={() => {
+                const exampleQuery = "Senior ML researcher with computer vision expertise and 5+ years experience";
+                setQuery(exampleQuery);
+                trackEvent('search_example_clicked', {
+                  example_type: 'ai_ml',
+                  example_text: exampleQuery
+                });
+              }}
               className="px-4 py-2 bg-white rounded-full border border-gray-200 hover:border-primary-300 transition-colors"
             >
               "<span className="font-semibold text-blue-600">Senior ML researcher</span> with computer vision expertise"
             </button>
             <button
-              onClick={() => setQuery("Biochemist with protein engineering experience and drug discovery background")}
+              onClick={() => {
+                const exampleQuery = "Biochemist with protein engineering experience and drug discovery background";
+                setQuery(exampleQuery);
+                trackEvent('search_example_clicked', {
+                  example_type: 'biochemistry',
+                  example_text: exampleQuery
+                });
+              }}
               className="px-4 py-2 bg-white rounded-full border border-gray-200 hover:border-primary-300 transition-colors"
             >
               "<span className="font-semibold text-green-600">Biochemist</span> with protein engineering expertise"
             </button>
             <button
-              onClick={() => setQuery("Materials scientist with nanomaterials and battery technology expertise")}
+              onClick={() => {
+                const exampleQuery = "Materials scientist with nanomaterials and battery technology expertise";
+                setQuery(exampleQuery);
+                trackEvent('search_example_clicked', {
+                  example_type: 'materials_science',
+                  example_text: exampleQuery
+                });
+              }}
               className="px-4 py-2 bg-white rounded-full border border-gray-200 hover:border-primary-300 transition-colors"
             >
               "<span className="font-semibold text-purple-600">Materials scientist</span> with nanomaterials expertise"
